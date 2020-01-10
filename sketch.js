@@ -1,26 +1,31 @@
-// You could have multiple flags like: start, launch to indicate the state of the game.
+const Engine = Matter.Engine;
+const World= Matter.World;
+const Bodies = Matter.Bodies;
 
-const { Engine, World, Bodies, Body, Mouse, MouseConstraint, Constraint, Composite, Detector } = Matter;
-// The above line creates different constant variables for Engine, World, Bodies etc.
+var engine
+var world;
+var cannonbody;
+var cannonbarrel;
+var cannonshooter;
+var ground;
 
-/*
+function setup(){
+    var canvas = createCanvas(800,400);
+    engine = Engine.create();
+    world = engine.world;
 
-const {Engine} = Matter 
-is the same as c
-onst Engine = Matter.Engine
-
-*/
-
-function setup() {
-    // Setup the canvas, the ground the, tanker, the shooting ball and the bubble balls.
-
+    cannonbody = new Box(50,200, 50 ,50, 255, 0, 0);
+    cannonbarrel = new Box(70,100, 150 ,15, 0, 255, 0);
+    cannonshooter = new Box(100, 200, 20, 50, 0, 0, 255);
+    ground = new Ground(width / 2, height, width, 20);
 }
 
-function draw() {
-// Remember to update the Matter Engine and set the background.
-}
-
-
-function keyReleased() {
-    // Call the shoot method for the cannon.
+function draw(){
+    background(0);
+    Engine.update(engine);
+    ground.display();
+    cannonbody.display();
+    cannonshooter.display();
+    cannonbarrel.display();
+   
 }

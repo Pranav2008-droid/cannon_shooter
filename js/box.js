@@ -1,17 +1,23 @@
-class Ground {
-    constructor(x, y, width, height) {
+class Box {
+    constructor(x, y, width, height, r, g, b) {
         var options = {
-            isStatic: true
+            'restitution': 0.1,
+            'friction': 0.5,
+            'density': 1
         }
         this.body = Bodies.rectangle(x, y, width, height, options);
         this.width = width;
         this.height = height;
+        this.r = r;
+        this.g = g;
+        this.b = b;
+
         World.add(world, this.body);
     }
     display() {
         var pos = this.body.position;
         rectMode(CENTER);
-        fill("brown");
+        fill(this.r, this.g, this.b);
         rect(pos.x, pos.y, this.width, this.height);
     }
 };
